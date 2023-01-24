@@ -1,0 +1,14 @@
+{% extends 'afloapp/layouts/main.html' %}
+
+{% block content %}
+    <h1>Hello from Afloapp!</h1>
+    {% for user in users %}
+    <p>{{user.id}} - {{user.username}}</p>
+    {% if user.username == "Quentin" %}
+    <p>Gagné !</p>
+    {% endif %}
+    {% endfor %}
+    {% if current_user.is_admin %}
+    <a href="#" role="button">Admin</a>
+    {% endif %}
+{% endblock content %}

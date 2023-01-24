@@ -1,0 +1,22 @@
+{% extends 'afloapp/layouts/main.html' %} {% block content %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <h3>Formations</h3>
+  <a href="{% url 'create-formation' %}" role="button">Créer une formation</a>
+</div>
+{% for formation in formations %}
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small
+    ><a href="{% url 'formation' formation.id %}">{{formation.id}}</a> -
+    {{formation.nom}} --- {{formation.updatedAt}}</small
+  >
+  <a href="{% url 'update-formation' formation.id %}">Modifier formation</a>
+</div>
+<br />
+<div style="display: flex; justify-content: space-between; align-items: start">
+  <small>{{formation.description}}</small>
+  <a href="{% url 'delete-formation' formation.id %}" style="color: red"
+    >Supprimer formation</a
+  >
+</div>
+<hr style="margin: 10px 0" />
+{% endfor %} {% endblock content %}

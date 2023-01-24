@@ -1,0 +1,11 @@
+{% extends 'afloapp/layouts/main.html' %}
+{% block content %}
+<h1>Créer une formation</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit">Créer</button>
+</form>
+
+
+{% endblock content %}
