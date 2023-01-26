@@ -2,7 +2,18 @@
 
 {% block content %}
     <h1>Hello from Afloapp!</h1>
-    {% for user in users %}
+    <p>Ici vous trouverez toutes les informations d'Aflokkat</p>
+    {{request.user.username}} {% comment %} {%
+        permet de récupérer et afficher la personne connectée
+    %}{% endcomment %}
+    {{request.user.is_authenticated}}
+    {% if request.user.is_authenticated %}
+    {{request.user.username}}
+    {% endif %}
+    
+
+
+    {% comment %} {% for user in users %}
     <p>{{user.id}} - {{user.username}}</p>
     {% if user.username == "Quentin" %}
     <p>Gagné !</p>
@@ -10,5 +21,5 @@
     {% endfor %}
     {% if current_user.is_admin %}
     <a href="#" role="button">Admin</a>
-    {% endif %}
+    {% endif %} {% endcomment %}
 {% endblock content %}

@@ -3,9 +3,15 @@
       <li><strong>Afloapp</strong></li>
     </ul>
     <ul>
-      <li><a href="{% url 'home' %}">Home</a></li>
-      <li><a href="{% url 'formations' %}">Formations</a></li>
-      <li><a href="{% url 'about' "Quentin" %}">About</a></li>
+      {% if request.user.is_authenticated %}
+        <small style='margin-right: 20px'>Bienvenue, {{request.user.username}}</small>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'formations' %}">Formations</a></li>
+        <li><a href="{% url 'about' "Quentin" %}">About</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
       <li><a href="{% url 'contact' %}">Contact</a></li>
       <li><a href="#" id="color-mode" onclick="toggleColorMode()">☀️</a></li>
     </ul>

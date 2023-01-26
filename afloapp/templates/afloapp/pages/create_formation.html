@@ -1,10 +1,16 @@
 {% extends 'afloapp/layouts/main.html' %}
 {% block content %}
+{% if type == "create" %}
 <h1>Créer une formation</h1>
+{% else %}
+<h1>Modifier la formation</h1>
+{% endif %}
 <form method="POST">
     {% csrf_token %}
     {{form}}
-    <button type="submit">Créer</button>
+    <button type="submit">
+        {% if type == "create" %}Créer{% else %}Modifier{% endif %}
+    </button>    
 </form>
 
 
